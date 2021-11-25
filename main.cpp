@@ -1,7 +1,7 @@
 #include <windows.h>
 #include <tp_stub.h>
 #include <ncbind.hpp>
-#include <Htmlhelp.h>
+#include <htmlhelp.h>
 #include <string>
 
 
@@ -18,12 +18,12 @@ std::string convertTtstrToUtf8String(ttstr &buf)
 
 
 // クッキー
-DWORD sCookie = NULL;
+DWORD_PTR sCookie = NULL;
 
 // HTMLヘルプを初期化
 void RegisterFunc(void)
 {
-  HtmlHelp(NULL, NULL, HH_INITIALIZE, (DWORD)&sCookie);
+  HtmlHelp(NULL, NULL, HH_INITIALIZE, (DWORD_PTR)&sCookie);
 }
 
 NCB_PRE_REGIST_CALLBACK(RegisterFunc);
@@ -31,7 +31,7 @@ NCB_PRE_REGIST_CALLBACK(RegisterFunc);
 // HTMLヘルプを終了
 void UnregisterFunc(void)
 {
-  HtmlHelp(NULL, NULL, HH_UNINITIALIZE, (DWORD)sCookie);
+  HtmlHelp(NULL, NULL, HH_UNINITIALIZE, (DWORD_PTR)sCookie);
 }
 
 NCB_POST_UNREGIST_CALLBACK(UnregisterFunc);
