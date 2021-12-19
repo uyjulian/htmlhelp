@@ -18,7 +18,7 @@ std::string convertTtstrToUtf8String(ttstr &buf)
 
 
 // クッキー
-DWORD_PTR sCookie = NULL;
+DWORD_PTR sCookie = 0;
 
 // HTMLヘルプを初期化
 void RegisterFunc(void)
@@ -45,7 +45,7 @@ public:
     HtmlHelp(NULL,
 	     path.c_str(),
 	     HH_DISPLAY_TOPIC,
-	     NULL);
+	     0);
   }
 };
 
